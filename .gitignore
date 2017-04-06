@@ -1,2 +1,3 @@
-./volumes/
+volumes/
 tdiary_puma/htpasswd
+.env
