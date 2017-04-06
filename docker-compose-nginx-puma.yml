@@ -1,0 +1,33 @@
+version: '2'
+services:
+  tdiary_puma:
+    image: tdiary_puma:latest
+    build:
+      context: ./tdiary_puma
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${http_proxy}
+        TDIARY_BASE_DIR: ${TDIARY_BASE_DIR}
+        TDIARY_CONF_FILE: ${TDIARY_CONF_FILE}
+    command: bundle exec puma --config puma_config.rb -e production
+    volumes:
+      - ./volumes/tdiary/tdiary-core/data:/tdiary/tdiary-core/data:rw
+
+  nginx_puma:
+    image: nginx_puma:latest
+    build:
+      context: ./nginx_puma
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${http_proxy}
+        SERVER_NAME: ${SERVER_NAME}
+        TDIARY_BASE_DIR: ${TDIARY_BASE_DIR}
+    command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    volumes:
+      - ./volumes/var/log/nginx:/var/log/nginx:rw
+    volumes_from:
+      - tdiary_puma
+    depends_on:
+      - tdiary_puma
