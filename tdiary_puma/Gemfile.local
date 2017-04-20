@@ -1,3 +1,5 @@
 gem 'puma'
 gem 'tdiary-contrib', :path => "#{File::expand_path('../../tdiary-contrib', __FILE__)}"
+gem 'tdiary-style-gfm', :path => "#{File::expand_path('../../tdiary-style-gfm', __FILE__)}"
+gem 'coderay'
 

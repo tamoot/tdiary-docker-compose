@@ -7,11 +7,11 @@ services:
       args:
         http_proxy: ${http_proxy}
         https_proxy: ${http_proxy}
-        TDIARY_BASE_DIR: ${TDIARY_BASE_DIR}
-        TDIARY_CONF_FILE: ${TDIARY_CONF_FILE}
-    command: bundle exec puma --config puma_config.rb -e production
+    env_file: .env
+    command: /tdiary/tdiary-core/entrypoint.sh
     volumes:
       - ./volumes/tdiary/tdiary-core/data:/tdiary/tdiary-core/data:rw
+      - ./volumes/tdiary/tdiary-core/public:/tdiary/tdiary-core/public:rw
 
   nginx_puma:
     image: nginx_puma:latest
