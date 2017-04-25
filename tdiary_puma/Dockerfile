@@ -32,6 +32,7 @@ RUN cd theme && ln -s  ../../tdiary-theme/* .
 ADD puma_config.rb ./puma_config.rb
 RUN mkdir -p ./tmp/puma ./tmp/pids ./tmp/logs ./tmp/sockets
 ADD entrypoint.sh ./entrypoint.sh
+RUN chmod 0755 ./entrypoint.sh
 
 # share other container
 VOLUME /tdiary/tdiary-core/public
