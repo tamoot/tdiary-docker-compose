@@ -29,7 +29,7 @@ RUN mv config.ru config.ru.org
 RUN cd theme && ln -s  ../../tdiary-theme/* .
 
 # js
-RUN cd js && ln -s ../../tdiary-contrib/js/*
+RUN cd js && ln -s ../../tdiary-contrib/js/* .
 
 
 # puma
