@@ -28,6 +28,10 @@ RUN mv config.ru config.ru.org
 # theme
 RUN cd theme && ln -s  ../../tdiary-theme/* .
 
+# js
+RUN cd js && ln -s ../../tdiary-contrib/js/*
+
+
 # puma
 ADD puma_config.rb ./puma_config.rb
 RUN mkdir -p ./tmp/puma ./tmp/pids ./tmp/logs ./tmp/sockets
