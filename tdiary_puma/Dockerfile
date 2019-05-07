@@ -1,8 +1,9 @@
-FROM ruby:2.4.1
+FROM ruby:2.6.3
 
 ARG http_proxy
 ARG https_proxy
 
+RUN apt-get update -y
 RUN apt-get install -y git
 
 RUN mkdir /tdiary
@@ -17,6 +18,7 @@ WORKDIR /tdiary/tdiary-core
 
 # bundler
 ADD Gemfile.local ./Gemfile.local
+RUN apt-get install -y libidn11-dev
 RUN bundle install --path vendor/bundle --without=development:test --jobs=4 --retry=3
 
 # conf
