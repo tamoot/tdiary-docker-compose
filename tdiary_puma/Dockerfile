@@ -4,7 +4,7 @@ ARG http_proxy
 ARG https_proxy
 
 RUN apt-get update -y
-RUN apt-get install -y git libldap2-dev libidn11-dev
+RUN apt-get install -y git libidn11-dev
 
 RUN mkdir /tdiary
 
