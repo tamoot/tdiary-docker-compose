@@ -3,7 +3,7 @@ FROM ruby:2.7.1
 ARG http_proxy
 ARG https_proxy
 
-RUN apt-get install -y git
+RUN apt-get install -y git libldap2-dev libidn11-dev
 
 RUN mkdir /tdiary
 
