@@ -1,4 +1,4 @@
-FROM ruby:2.4.1
+FROM ruby:2.7.1
 
 ARG http_proxy
 ARG https_proxy
