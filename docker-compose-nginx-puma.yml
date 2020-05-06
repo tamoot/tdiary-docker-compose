@@ -43,4 +43,4 @@ services:
       - ./volumes/var/lib/https-portal:/var/lib/https-portal
     restart: always
     environment:
-      DOMAINS: 'www.tamoot.net -> http://nginx_puma, tamoot.net -> http://nginx_puma'
+      DOMAINS: "${SERVER_NAME} => https://${HTTPS_PORTAL_DOMAIN_NAME}"
