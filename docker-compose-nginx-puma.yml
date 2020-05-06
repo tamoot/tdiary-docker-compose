@@ -31,3 +31,16 @@ services:
       - tdiary_puma
     depends_on:
       - tdiary_puma
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - nginx_puma
+    volumes:
+      - ./volumes/var/lib/https-portal:/var/lib/https-portal
+    restart: always
+    environment:
+      DOMAINS: 'www.tamoot.net -> http://nginx_puma, tamoot.net -> http://nginx_puma'
