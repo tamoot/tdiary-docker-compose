@@ -23,8 +23,7 @@ services:
         SERVER_NAME: ${SERVER_NAME}
         TDIARY_BASE_DIR: ${TDIARY_BASE_DIR}
     command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
-    ports:
-      - "80:80"
+    env_file: .env
     volumes:
       - ./volumes/var/log/nginx:/var/log/nginx:rw
     volumes_from:
@@ -42,5 +41,6 @@ services:
     volumes:
       - ./volumes/https-portal:/var/lib/https-portal
     restart: always
+    env_file: .env
     environment:
-      DOMAINS: "${SERVER_NAME} => https://${HTTPS_PORTAL_DOMAIN_NAME}"
+      DOMAINS: "${SERVER_NAME} => http://nginx_puma"
