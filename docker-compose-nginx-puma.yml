@@ -43,4 +43,5 @@ services:
     restart: always
     env_file: .env
     environment:
-      DOMAINS: "${SERVER_NAME} => http://nginx_puma"
+      DOMAINS: "${SERVER_NAME} -> http://nginx_puma"
+      STAGE: "production"
