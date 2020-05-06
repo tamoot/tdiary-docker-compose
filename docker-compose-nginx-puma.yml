@@ -40,7 +40,7 @@ services:
     links:
       - nginx_puma
     volumes:
-      - ./volumes/var/lib/https-portal:/var/lib/https-portal
+      - ./volumes/https-portal:/var/lib/https-portal
     restart: always
     environment:
       DOMAINS: "${SERVER_NAME} => https://${HTTPS_PORTAL_DOMAIN_NAME}"
