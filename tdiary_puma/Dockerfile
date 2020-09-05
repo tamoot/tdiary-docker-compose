@@ -18,6 +18,7 @@ WORKDIR /tdiary/tdiary-core
 
 # bundler
 ADD Gemfile.local ./Gemfile.local
+RUN bundle update
 RUN bundle install --path vendor/bundle --without=development:test --jobs=4 --retry=3
 
 # conf
