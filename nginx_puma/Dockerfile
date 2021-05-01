@@ -1,4 +1,4 @@
-FROM nginx:1.11.3
+FROM nginx:latest
 
 ARG SERVER_NAME
 ARG TDIARY_BASE_DIR
